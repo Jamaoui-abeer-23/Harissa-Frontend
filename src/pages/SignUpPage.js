@@ -1,71 +1,68 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import '../style/auth.css'; // Import global CSS
+import { useNavigate } from 'react-router-dom';
 
-const SignUp = () => {
-  const [name, setName] = useState('');
+const SignUpPage = () => {
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
   const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      // Simulate an API call to create a new user
-      await axios.post('/api/auth/signup', { name, email, password });
-
-      // Redirect to the login page after successful signup
+      await axios.post('/api/auth/signup', { username, email, password });
+      alert('Account created successfully!');
       navigate('/login');
-    } catch (err) {
-      setError('An error occurred. Please try again.');
+    } catch (error) {
+      console.error('Sign up failed:', error);
+      alert('Failed to create account. Please try again.');
     }
   };
 
   return (
-    <div className="authPage">
-      <div className="formContainer">
-        <h1 className="title">Sign Up</h1>
-        {error && <p className="error">{error}</p>}
-        <form onSubmit={handleSignUp} className="form">
-          <input
-            type="text"
-            placeholder="Enter your name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="input"
-            required
-          />
-          <input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="input"
-            required
-          />
-          <input
-            type="password"
-            placeholder="Enter your password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="input"
-            required
-          />
-          <button type="submit" className="button">
-            Sign Up
-          </button>
-          <p className="linkText">
-            Already have an account?{' '}
-            <Link to="/login" className="link">
-              Login
-            </Link>
-          </p>
+    <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
+      <div className="card p-4" style={{ width: '30rem' }}>
+        <h2 className="text-center mb-4">Sign Up</h2>
+        <form onSubmit={handleSignUp}>
+          <div className="mb-3">
+            <label htmlFor="username" className="form-label">Username</label>
+            <input
+              type="text"
+              className="form-control"
+              id="username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">Email</label>
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label">Password</label>
+            <input
+              type="password"
+              className="form-control"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit" className="btn btn-primary w-100">Sign Up</button>
         </form>
       </div>
     </div>
   );
 };
 
-export default SignUp;
+export default SignUpPage;
