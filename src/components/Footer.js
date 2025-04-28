@@ -83,7 +83,7 @@ const Footer = () => {
               {categories.map((category, index) => (
                 <li key={index} className="mb-2">
                   <a
-                    href="#"
+                    href="/HomePage"
                     className="text-decoration-none text-dark"
                     style={{
                       transition: 'all 0.3s ease',
@@ -126,7 +126,7 @@ const Footer = () => {
               {pages.map((page, index) => (
                 <li key={index} className="mb-2">
                   <a
-                    href="#"
+                    href="HomePage"
                     className="text-decoration-none text-dark"
                     style={{
                       transition: 'all 0.3s ease',

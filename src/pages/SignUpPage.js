@@ -21,12 +21,12 @@ const SignUpPage = () => {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100 bg-light">
-      <div className="card p-4" style={{ width: '30rem' }}>
-        <h2 className="text-center mb-4">Sign Up</h2>
+    <div className="d-flex justify-content-center align-items-center vh-100 bg-danger bg-gradient">
+      <div className="card p-4 shadow-lg" style={{ width: '30rem', borderRadius: '1rem' }}>
+        <h2 className="text-center mb-4 text-white">Create Your Account</h2>
         <form onSubmit={handleSignUp}>
           <div className="mb-3">
-            <label htmlFor="username" className="form-label">Username</label>
+            <label htmlFor="username" className="form-label text-white">Username</label>
             <input
               type="text"
               className="form-control"
@@ -37,7 +37,7 @@ const SignUpPage = () => {
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="email" className="form-label">Email</label>
+            <label htmlFor="email" className="form-label text-white">Email</label>
             <input
               type="email"
               className="form-control"
@@ -48,7 +48,7 @@ const SignUpPage = () => {
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="password" className="form-label">Password</label>
+            <label htmlFor="password" className="form-label text-white">Password</label>
             <input
               type="password"
               className="form-control"
@@ -58,8 +58,13 @@ const SignUpPage = () => {
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary w-100">Sign Up</button>
+          <button type="submit" className="btn btn-light w-100 fw-bold">
+            Sign Up
+          </button>
         </form>
+        <p className="text-center mt-3 text-white">
+          Already have an account? <a href="/login" className="text-light fw-bold">Log In</a>
+        </p>
       </div>
     </div>
   );
